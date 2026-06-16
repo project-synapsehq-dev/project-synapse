@@ -1,1 +1,3 @@
-# project-synapse
+# Project Synapse
+
+A concept game
