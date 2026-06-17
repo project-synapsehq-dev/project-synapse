@@ -86,14 +86,17 @@ loginBtn.addEventListener("click", async () => {
     const user = data.user;
 
 const { data: agent, error: agentError } =
-console.log(agent);
-console.log(agentError);
-console.log(user.id);
     await client
         .from("agents")
         .select("*")
-        .eq("id", user.id)
-        .single();
+        .eq("id", user.id);
+
+console.log("USER ID:", user.id);
+console.log("AGENT:", agent);
+console.log("ERROR:", agentError);
+
+statusText.textContent =
+    "Check Console";
 
 statusText.innerHTML = `
     CONNECTED TO FOUND://
