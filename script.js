@@ -3,7 +3,7 @@
 // =========================
 
 // PASTE YOUR VALUES HERE
-const SUPABASE_URL = "https://viitvlzhdzyypyeexynf.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://viitvlzhdzyypyeexynf.supabase.co";
 const SUPABASE_KEY = "sb_publishable_rlVHBRgHGYwBmwN586klXw_atX8rrrV";
 
 // Create client
