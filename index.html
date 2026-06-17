@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Synapse</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>PROJECT SYNAPSE</h1>
-    <p>CONNECTED TO FOUND://</p>
+
+    <div class="container">
+
+        <h1>PROJECT SYNAPSE</h1>
+
+        <p class="subtitle">
+            CONNECTED TO FOUND://
+        </p>
+
+        <div class="card">
+
+            <input
+                type="text"
+                id="displayName"
+                placeholder="Display Name"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+            >
+
+            <button id="registerBtn">
+                REGISTER
+            </button>
+
+            <button id="loginBtn">
+                LOGIN
+            </button>
+
+            <p id="status"></p>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>
