@@ -83,6 +83,28 @@ loginBtn.addEventListener("click", async () => {
         return;
     }
 
-    statusText.textContent =
-        "CONNECTED TO FOUND://";
+    const user = data.user;
+
+const { data: agent } =
+    await client
+        .from("agents")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+statusText.innerHTML = `
+    CONNECTED TO FOUND://
+    <br><br>
+
+    AGENT: ${agent.display_name}
+    <br>
+
+    ROLE: ${agent.role}
+    <br>
+
+    LEVEL: ${agent.level}
+    <br>
+
+    XP: ${agent.xp}
+`;
 });
