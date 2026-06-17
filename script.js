@@ -1,63 +1,88 @@
-const supabaseUrl = "https://viitvlzhdzyypyeexynf.supabase.co/rest/v1/";
-const supabaseKey = "sb_publishable_rlVHBRgHGYwBmwN586klXw_atX8rrrV";
+// =========================
+// PROJECT SYNAPSE
+// =========================
 
-const supabase = window.supabase.createClient(
-    supabaseUrl,
-    supabaseKey
+// PASTE YOUR VALUES HERE
+const SUPABASE_URL = "https://viitvlzhdzyypyeexynf.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_rlVHBRgHGYwBmwN586klXw_atX8rrrV";
+
+// Create client
+const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
 );
 
+// Elements
+const displayNameInput = document.getElementById("displayName");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
-const displayNameInput = document.getElementById("displayName");
 
 const registerBtn = document.getElementById("registerBtn");
 const loginBtn = document.getElementById("loginBtn");
 
 const statusText = document.getElementById("status");
 
-registerBtn.addEventListener("click", register);
-loginBtn.addEventListener("click", login);
+console.log("PROJECT SYNAPSE ONLINE");
 
-async function register() {
+// =========================
+// REGISTER
+// =========================
 
-    const email = emailInput.value;
+registerBtn.addEventListener("click", async () => {
+
+    const displayName = displayNameInput.value.trim();
+    const email = emailInput.value.trim();
     const password = passwordInput.value;
-    const displayName = displayNameInput.value;
 
-    statusText.textContent = "Creating Agent...";
-
-    const { data, error } = await supabase.auth.signUp({
-        email,
-        password
-    });
-
-    if (error) {
-        statusText.textContent = error.message;
+    if (!displayName || !email || !password) {
+        statusText.textContent =
+            "Fill all fields.";
         return;
     }
 
-    statusText.textContent = "Agent Created.";
-}
-
-async function login() {
-
-    const email = emailInput.value;
-    const password = passwordInput.value;
-
-    statusText.textContent = "Authenticating...";
+    statusText.textContent =
+        "Creating Agent...";
 
     const { data, error } =
-        await supabase.auth.signInWithPassword({
+        await client.auth.signUp({
             email,
             password
         });
 
     if (error) {
-        statusText.textContent = error.message;
+        statusText.textContent =
+            error.message;
+        return;
+    }
+
+    statusText.textContent =
+        "Agent Created.";
+});
+
+// =========================
+// LOGIN
+// =========================
+
+loginBtn.addEventListener("click", async () => {
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    statusText.textContent =
+        "Authenticating...";
+
+    const { data, error } =
+        await client.auth.signInWithPassword({
+            email,
+            password
+        });
+
+    if (error) {
+        statusText.textContent =
+            error.message;
         return;
     }
 
     statusText.textContent =
         "CONNECTED TO FOUND://";
-}
-console.log("SCRIPT LOADED")
+});
