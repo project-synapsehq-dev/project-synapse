@@ -60,3 +60,4 @@ async function login() {
     statusText.textContent =
         "CONNECTED TO FOUND://";
 }
+console.log("SCRIPT LOADED")
