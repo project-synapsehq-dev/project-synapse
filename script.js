@@ -85,7 +85,10 @@ loginBtn.addEventListener("click", async () => {
 
     const user = data.user;
 
-const { data: agent } =
+const { data: agent, error: agentError } =
+console.log(agent);
+console.log(agentError);
+console.log(user.id);
     await client
         .from("agents")
         .select("*")
