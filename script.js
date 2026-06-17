@@ -89,14 +89,8 @@ const { data: agent, error: agentError } =
     await client
         .from("agents")
         .select("*")
-        .eq("id", user.id);
-
-console.log("USER ID:", user.id);
-console.log("AGENT:", agent);
-console.log("ERROR:", agentError);
-
-statusText.textContent =
-    "Check Console";
+        .eq("id", user.id)
+        .single();
 
 statusText.innerHTML = `
     CONNECTED TO FOUND://
